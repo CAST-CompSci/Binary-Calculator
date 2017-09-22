@@ -1,67 +1,72 @@
-﻿Module Module1
+Module Module1
+
     Sub Main()
-        Dim binary As String
-        Dim binary2 As String
-        Dim len, len2 As Integer
-        Dim countdown, countdown2, ram As Integer
+        Dim userNum, userNum2, character, character2, temp, remind, result As String
+        Dim length1, length2, len1, len2 As Integer
+        Dim binary As Integer = 1
+
+        Console.WriteLine("Enter first Binary")
+        userNum = Console.ReadLine()
+        Console.WriteLine("Enter binary to add")
+        userNum2 = Console.ReadLine()
+
+        length1 = userNum.Length
+        len1 = length1
+        length2 = userNum2.Length
+        len2 = length2
+
+        remind = "0"
+        result = ""
+
+        For i = 1 To len1
+
+            character = userNum.Chars(len1 - 1)
+            character2 = userNum2.Chars(len2 - 1)
 
 
+            temp = character & character2 & remind
 
 
-        Console.WriteLine("please enter a binery number")
-        binary = Console.ReadLine
-        Console.WriteLine("please enter a binery number")
-        binary2 = Console.ReadLine
-        len = binary.Length
-        len2 = binary2.Length
-
-        Dim Val(len) As String
-        Dim Val2(len2) As String
-        Dim ans(len + 1) As String
-        Dim L As String
-
-        countdown = len
-        For i = 1 To len
-            Val(i) = binary.Chars(countdown - 1)
-            countdown = countdown - 1
-
-        Next
-
-        countdown2 = len2
-        For i = 1 To len2
-            Val2(i) = binary.Chars(countdown2 - 1)
-            countdown2 = countdown2 - 1
-        Next
-
-
-        L = len + 1
-
-        For i = 1 To len
-            If Val(i) + Val2(i) = 0 Then
-                ans(L) = "0"
-                ram = "0"
-            ElseIf Val(i) + Val2(i) = 1 Then
-                ans(L) = "1"
-                ram = "0"
-            ElseIf Val(i) + Val2(i) = 2 Then
-                ans(L) = "0"
-                ram = "1"
-            ElseIf Val(i) + Val2(i) + ram = 3 Then
-                ans(L) = "1"
-                ram = "1"
+            If temp = "000" Then
+                result = "0" & result
+            ElseIf temp = "100" Then
+                result = "1" & result
+            ElseIf temp = "010" Then
+                result = "1" & result
+            ElseIf temp = "001" Then
+                result = "1" & result
+            ElseIf temp = "110" Then
+                result = "0" & result
+                remind = "1"
+            ElseIf temp = "101" Then
+                result = "0" & result
+                remind = "1"
+            ElseIf temp = "011" Then
+                result = "0" & result
+                remind = "1"
+            ElseIf temp = "111" Then
+                result = "1" & result
+                remind = "1"
             End If
-            L = L - 1
 
+            If temp = "111" And i = length1 Then
+                result = "1" & result
+            ElseIf temp = "011" And i = length1 Then
+                result = "1" & result
+            ElseIf temp = "110" And i = length1 Then
+                result = "1" & result
+            ElseIf temp = "101" And i = length1 Then
+                result = "1" & result
+            End If
+
+            len1 = len1 - 1
+            len2 = len2 - 1
+            temp = ""
         Next
 
-        For Each num As String In ans
-            Console.WriteLine(num & " ")
-
-        Next
-        Console.WriteLine("")
-
+        Console.WriteLine(result)
         Console.ReadLine()
 
-
     End Sub
+
 End Module
