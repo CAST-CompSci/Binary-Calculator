@@ -1,8 +1,8 @@
 Module Module1
 
     Sub Main()
-        Dim userNum, userNum2, character, character2, temp, remind, result As String
-        Dim length1, length2, len1, len2 As Integer
+        Dim userNum, userNum2 As String
+        Dim len1, len2 As Integer
         Dim binary As Integer = 1
 
         Console.WriteLine("Enter first Binary")
@@ -10,11 +10,18 @@ Module Module1
         Console.WriteLine("Enter binary to add")
         userNum2 = Console.ReadLine()
 
-        length1 = userNum.Length
-        len1 = length1
-        length2 = userNum2.Length
-        len2 = length2
+        len1 = userNum.Length()
+        len2 = userNum2.Length()
 
+        Console.WriteLine(addStrings(userNum, userNum2, len1, len2))
+        Console.ReadLine()
+
+    End Sub
+
+    Function addStrings(userNum As String, userNum2 As String, len1 As Integer, len2 As Integer)
+        Dim character, character2, temp, result, remind As String
+        Dim length1 As Integer = len1
+        Dim length2 As Integer = len2
         remind = "0"
         result = ""
 
@@ -63,10 +70,6 @@ Module Module1
             len2 = len2 - 1
             temp = ""
         Next
-
-        Console.WriteLine(result)
-        Console.ReadLine()
-
-    End Sub
-
+        Return result
+    End Function
 End Module
