@@ -1,19 +1,36 @@
 Module Module1
 
     Sub Main()
-        Dim userNum, userNum2 As String
-        Dim len1, len2 As Integer
+        Dim userNum(0) As String
+        Dim howMany As Integer
         Dim binary As Integer = 1
+        Dim answer As String
 
-        Console.WriteLine("Enter first Binary")
-        userNum = Console.ReadLine()
-        Console.WriteLine("Enter binary to add")
-        userNum2 = Console.ReadLine()
+        Console.WriteLine("Please enter how many binary strings you would like to add")
+        howMany = Integer.Parse(Console.ReadLine())
 
-        len1 = userNum.Length()
-        len2 = userNum2.Length()
+        ReDim userNum(howMany)
 
-        Console.WriteLine(addStrings(userNum, userNum2, len1, len2))
+        For i = 0 To howMany
+            Console.WriteLine("Please Binary String " + i.ToString())
+            userNum(i) = Console.ReadLine()
+        Next
+
+        For i = 0 To userNum.Length() - 1
+            If userNum(i).Length < 64 Then
+                For ib = 0 To (64 - userNum(i).Length())
+                    userNum(i) = "0" + userNum(i)
+                Next
+            End If
+        Next
+
+        answer = addStrings(userNum(0), userNum(1), 64, 64)
+
+        For i = 2 To howMany
+            answer = addStrings(answer, userNum(i), 64, 64)
+        Next
+
+        Console.WriteLine(answer)
         Console.ReadLine()
 
     End Sub
